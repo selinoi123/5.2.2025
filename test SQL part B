@@ -1,0 +1,30 @@
+-- Question A
+
+CREATE TABLE televisions (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    number_catalog INTEGER  NOT NULL UNIQUE,
+    brand TEXT CHECK (brand IN ('Samsung', 'LG', 'Sony')) NOT NULL,
+    model TEXT NOT NULL,
+    size_screen INTEGER CHECK (size_screen > 0) NOT NULL,
+    resolution TEXT CHECK (resolution IN ('4K', '8K', 'Full HD')) NOT NULL,
+    price CHECK (price > 0) NOT NULL,
+    quantity_stock INTEGER CHECK (quantity_stock >= 0) DEFAULT 0,
+    year_release INTEGER CHECK (year_release >= 2000),
+    tv_smart CHECK (tv_smart IN (0, 1)) NOT NULL
+    os TEXT DEFAULT NULL,
+    panel_type TEXT CHECK (panel_type IN ('OLED', 'QLED', 'LED')) NOT NULL
+);
+
+-- Question B
+
+INSERT INTO televisions (number_catalog, brand, model, size_screen, resolution, price, quantity_stock, year_release, tv_smart, os, panel_type)
+VALUES 
+(1001, 'Samsung', 'Neo QLED 8K', 65, '8K', 8999.9, 10, 2023, 1, 'Tizen', 'QLED');
+
+INSERT INTO televisions (number_catalog, brand, model, size_screen, resolution, price, quantity_stock, year_release, tv_smart, os, panel_type)
+VALUES 
+(1002, 'LG', 'OLED C2', 55, '4K', 1999.9, 15, 2022, 1, 'webOS', 'OLED');
+
+INSERT INTO televisions (number_catalog, brand, model, size_screen, resolution, price, quantity_stock, year_release, tv_smart, os, panel_type)
+VALUES 
+(323605, 'Sony', '75QM8B', 75, '4K', 6490.00, 8, 2024, 1, '4K Ultra HD', 'QLED');
